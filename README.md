@@ -17,10 +17,10 @@
 
 - Normally, we would use built in DOM methods, like `document.querySelector()` to retrieve the values of form inputs. React is now going to take over the control of our input.
 
-- There are a few pieces of this process:
-  1. The form input's value will be set to a portion of the component's state
-  2. The form input will have an `onChange` event handler
-  3. The `onChange` event handler will set the state of the input to the new value of the input
+-There are a few pieces of this process:
+    - The form input's value will be set to a portion of the component's state
+    - The form input will have an `onChange` event handler
+    - The `onChange` event handler will set the state of the input to the new value of the input
 
 - Note that the form itself also has an `onSubmit` event handler. This is so we can prevent the form from actually submitting if the user hits enter on the input box.
 
