@@ -14,8 +14,11 @@ class App extends Component {
   }
 
   handleColorInputChange(event) {
-    event.preventDefault();
     this.setState({bgColor: event.target.value});
+  }
+
+  handleSubmit(event) {
+    event.preventDefault();
   }
 
   render() {
@@ -28,7 +31,7 @@ class App extends Component {
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
-        <form>
+        <form onSubmit={this.handleSubmit}>
           <label>
             Color:
             <input
