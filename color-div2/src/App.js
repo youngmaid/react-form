@@ -14,8 +14,8 @@ class App extends Component {
   }
 
   handleColorInputChange(event) {
-    this.setState({bgColor: event.target.value});
     event.preventDefault();
+    this.setState({bgColor: event.target.value});
   }
 
   render() {
