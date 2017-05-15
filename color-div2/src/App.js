@@ -10,10 +10,10 @@ class App extends Component {
       bgColor: 'red',
     }
 
-    this.handleColorChange = this.handleColorChange.bind(this);
+    this.handleColorInputChange = this.handleColorInputChange.bind(this);
   }
 
-  handleColorChange(event) {
+  handleColorInputChange(event) {
     this.setState({bgColor: event.target.value});
   }
 
@@ -34,7 +34,7 @@ class App extends Component {
               type="text"
               name="color"
               value={this.state.bgColor}
-              onChange={this.handleColorChange}
+              onChange={this.handleColorInputChange}
             />
           </label>
         </form>
