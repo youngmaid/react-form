@@ -17,7 +17,8 @@
 
 - Normally, we would use built in DOM methods, like `document.querySelector()` to retrieve the values of form inputs. React is now going to take over the control of our input.
 
--There are a few pieces of this process:
+#### There are a few pieces of this process:
+
     - The form itself is a separate component that is comprised of input fields and a submit functionality.
     - Every input value of the form is set as a part of the state in the parent component
     - The form receives methods to control every input field.
