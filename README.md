@@ -11,19 +11,74 @@
 
 - From the React docs:
 
-- In HTML, form elements such as `<input>`, `<textarea>`, and `<select>` typically maintain their own state and update it based on user input. In React, mutable state is typically kept in the state property of components, and only updated with setState().
+- In HTML, form elements such as `<input>`, `<textarea>`, and `<select>` typically maintain their own state and update it based on user input. In React, mutable state is typically kept in the state property of components, and only updated with `setState()`.
 
 - We can combine the two by making the React state be the "single source of truth". Then the React component that renders a form also controls what happens in that form on subsequent user input. An input form element whose value is controlled by React in this way is called a "controlled component".
 
 - Normally, we would use built in DOM methods, like `document.querySelector()` to retrieve the values of form inputs. React is now going to take over the control of our input.
 
 -There are a few pieces of this process:
-    - The form input's value will be set to a portion of the component's state
-    - The form input will have an `onChange` event handler
-    - The `onChange` event handler will set the state of the input to the new value of the input
+    - The form itself is a separate component that is comprised of input fields and a submit functionality.
+    - Every input value of the form is set as a part of the state in the parent component
+    - The form receives methods to control every input field.
+    - The form input will have an `onChange` event handler which, will set the state of the parent component to the new value of the input
+    - Form has an `onSubmit` event handler. This is so we can prevent the form from actually submitting if the user hits enter on the input box and prevent the page from reloading.
 
-- Note that the form itself also has an `onSubmit` event handler. This is so we can prevent the form from actually submitting if the user hits enter on the input box.
+<details>
+    <summary>
+      Here is the code in our app to add control to our input field
+    </summary>
+      ```js
+      <input
+          type="text"
+          value={this.props.inputContentValue}
+          name="content"
+          placeholder="Add Quote Here"
+          onChange={this.props.handleInputContentChange}
+        />
+      ```
+</details>
 
 ## [Uncontrolled form inputs](https://facebook.github.io/react/docs/uncontrolled-components.html)
 
-- React also enables us to control form inputs ourselves using somethings called `ref`s. Take a peak at the documentation if you're curious. We can always use controlled inputs.
+  - React also enables us to control form inputs ourselves using somethings called `ref`s. Take a peak at the documentation if you're curious. Even though is seems to be easier to understand, code, and manipulate, it is NOT a best practice.
+ So we will not spend too much time on it.
+
+<details>
+    <summary>
+      Here is the code in our app to add uncontrolled input
+    </summary>
+      ```js
+        class NameForm extends React.Component {
+          constructor(props) {
+            super(props);
+            this.handleSubmit = this.handleSubmit.bind(this);
+          }
+
+          handleSubmit(event) {
+            alert('A name was submitted: ' + this.input.value);
+            event.preventDefault();
+          }
+
+          render() {
+            return (
+              <form onSubmit={this.handleSubmit}>
+              <label>
+              Name:
+              <input type="text" ref={(input) => this.input = input} />
+              </label>
+              <input type="submit" value="Submit" />
+              </form>
+            );
+          }
+        }<input
+            type="text"
+            value={this.props.inputContentValue}
+            name="content"
+            placeholder="Add Quote Here"
+            onChange={this.props.handleInputContentChange}
+          />
+      ```
+</details>
+
+**FROM REACT DOCS: "Avoid using refs for anything that can be done declaratively."**
