@@ -15,8 +15,8 @@ class App extends Component {
       inputAuthorValue: '',
       inputGenreValue: '',
     }
-    this.changeBgColor = this.changeBgColor.bind(this);
 
+    this.changeBgColor = this.changeBgColor.bind(this);
     this.handleInputContentChange = this.handleInputContentChange.bind(this);
     this.handleInputAuthorChange = this.handleInputAuthorChange.bind(this);
     this.handleInputGenreChange = this.handleInputGenreChange.bind(this);
@@ -38,7 +38,7 @@ class App extends Component {
   //COLOR FUN
   changeBgColor() {
     let letters= '0123456789ABCDEF';
-    let coor = '#';
+    let color = '#';
     for(let i = 0; i < 6; i++) {
       color += letters[Math.floor(Math.random() * 16)];
     }
@@ -54,6 +54,13 @@ class App extends Component {
       inputContentValue: event.target.value
     });
    }
+
+   handleInputAuthorChange(event) {
+    this.setState({
+      inputAuthorValue: event.target.value
+    });
+   }
+
 
    handleInputGenreChange(event) {
     this.setState({
